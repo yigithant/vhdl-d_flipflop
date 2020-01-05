@@ -1,0 +1,22 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity d_flipflop is
+port(
+
+d: in std_logic;
+enable: in std_logic;
+q: out std_logic;
+q_not: out std_logic
+);
+end d_flipflop;
+
+architecture behavior of d_flipflop is
+signal ara1, ara2, ara3, ara4, ara5:std_logic;
+begin
+ara1<=not(d and enable);
+ara2<=not(d and d);
+ara3<=not(enable and ara2);
+q_not<=not(q and ara3);
+q<=not(ara1 and q_not);
+end behavior;
